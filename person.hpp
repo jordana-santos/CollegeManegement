@@ -43,7 +43,6 @@ class Person {
             this->phone = phone;
         }
 
-
 };
 
 #endif
