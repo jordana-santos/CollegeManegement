@@ -8,6 +8,7 @@ using namespace std;
 
 class Aluno: public Person{
 
+
     private:
         string ra;
         string course;
@@ -33,9 +34,6 @@ class Aluno: public Person{
     void setCourse(string course){
     this->course = course;
     }
-
-
-
 
 };
 

@@ -6,6 +6,7 @@
 using namespace std;
 
 class Person {
+    
     private:
         string name;
         int age;
