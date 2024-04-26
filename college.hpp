@@ -7,32 +7,41 @@
 #include "teacherDTO.hpp"
 #include "classDTO.hpp"
 
-
 using namespace std;
 
-class College {
+const class College {
 
     private:
-        vector<shared_ptr<StudentDTO>> students;
-        vector<shared_ptr<TeacherDTO>> teachers;
-        vector<shared_ptr<ClassDTO>> classes;
+        vector<shared_ptr<studentDTO>> students;
+        vector<shared_ptr<teacherDTO>> teachers;
+        vector<shared_ptr<classDTO>> classes;
 
     public:
         //get
-        vector<shared_ptr<StudentDTO>>& getStudentList(); {
+        vector<shared_ptr<studentDTO>>& getStudentList() {
             return students;
         }
 
-        vector<shared_ptr<TeacherDTO>>& getTeacherList(); {
+        vector<shared_ptr<teacherDTO>>& getTeacherList() {
             return teachers;
         }
 
-        vector<shared_ptr<ClassDTO>>& getClassList(); {
+        vector<shared_ptr<classDTO>>& getClassList() {
             return classes;
         }
 
         //set
-        
+        void setStudentList() {
+            this->students = students;
+        }
+
+        void setTeacherList() {
+            this->teachers = teachers;
+        }
+
+        void setClassList() {
+            this->classes = classes;
+        }
 
 };
 

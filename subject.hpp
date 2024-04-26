@@ -40,7 +40,7 @@ class Subject {
             this->name = name;
         }
 
-        void setPhone(string syllabus){
+        void setSyllabus(string syllabus){
             this->syllabus = syllabus;
         }
 

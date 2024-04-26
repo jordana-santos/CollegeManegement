@@ -36,11 +36,11 @@ class Semester {
             this->id = id;
         }
 
-        void setAge(int year){
+        void setYear(int year){
             this->year = year;
         }
 
-        void setPhone(int semesterNumber){
+        void setSemesterNumber(int semesterNumber){
             this->semesterNumber = semesterNumber;
         }
 
