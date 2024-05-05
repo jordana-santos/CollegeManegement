@@ -1,6 +1,5 @@
-# CollegeManegement
- Trabalho da disciplina de POO I
- 
-teste 1
+#Projeto College Management System
 
-bbbbbbbbbbbbbbbaaaaaaaaaaaaaaaa
+#Objetivo
+Desenvolver um sistema de gerenciamento escolar em C++ para agregar os
+conteúdos previstos para a disciplina SI300B (Programação Orientada a Objetos I).
