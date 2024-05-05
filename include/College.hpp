@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 #include "StudentDTO.hpp"
-#include "SeacherDTO.hpp"
 #include "ClassDTO.hpp"
 
 using namespace std;

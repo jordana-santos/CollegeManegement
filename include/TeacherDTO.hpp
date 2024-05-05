@@ -20,7 +20,6 @@ class Teacher: public Person{
         return id;
     }
 
-
     //set
     void setID(string id){
         this->id = id;

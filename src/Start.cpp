@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int start() {
+int main() {
     //variaveis
     Menu menu;
     int choice;
