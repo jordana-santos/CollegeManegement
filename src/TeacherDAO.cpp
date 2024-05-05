@@ -6,6 +6,22 @@ class TeacherDAO : public AbstractDAO<TeacherDTO> {
     vector<TeacherDTO> teachers;
 
     public:
+    //getters
+    string getID(){
+        return id;
+    }
+    string getName(){
+        return name;
+    }
+
+    //setters
+    void setID(string id){
+        this->id = id;
+    }
+    void setName(string name){
+        this->name = name;
+    }
+    
     void add(const TeacherDTO& teacher) override {
         teachers.push_back(teacher);
         cout << "Adicionando "<<teacher.getNome()<<" ao sistema..." <<endl;

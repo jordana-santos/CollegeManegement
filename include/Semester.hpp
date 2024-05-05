@@ -7,7 +7,7 @@ using namespace std;
 
 class Semester {
     
-    private:
+    protected:
         string id;
         int year;
         int semesterNumber;

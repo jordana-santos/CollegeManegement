@@ -3,7 +3,7 @@
 #include "Subject.hpp"
 
 class Controller {
-private:
+protected:
 
 public:
 

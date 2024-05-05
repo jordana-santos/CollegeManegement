@@ -11,7 +11,7 @@ using namespace std;
 
 const class College {
 
-    private:
+    protected:
         vector<shared_ptr<studentDTO>> students;
         vector<shared_ptr<teacherDTO>> teachers;
         vector<shared_ptr<classDTO>> classes;

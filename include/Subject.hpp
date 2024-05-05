@@ -5,9 +5,8 @@
 
 using namespace std;
 
-class Subject {
-    
-    private:
+class Subject {    
+    protected:
         string code;
         string name;
         string syllabus;
@@ -22,11 +21,9 @@ class Subject {
         string getCode(){
             return code;
         }
-
         string getName(){
             return name;
         }
-
         string getSyllabus(){
             return syllabus;
         }
@@ -35,11 +32,9 @@ class Subject {
         void setCode(string code){
             this->code = code;
         }
-
         void setName(string name){
             this->name = name;
         }
-
         void setSyllabus(string syllabus){
             this->syllabus = syllabus;
         }
