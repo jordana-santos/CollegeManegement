@@ -1,30 +1,15 @@
-#include "AbstractDAO.hpp"
-#include "TeacherDTO.hpp"
+#include "../include/AbstractDAO.hpp"
+#include "../include/TeacherDTO.hpp"
 
 class TeacherDAO : public AbstractDAO<TeacherDTO> {
     protected:
     vector<TeacherDTO> teachers;
 
     public:
-    //getters
-    string getID(){
-        return id;
-    }
-    string getName(){
-        return name;
-    }
-
-    //setters
-    void setID(string id){
-        this->id = id;
-    }
-    void setName(string name){
-        this->name = name;
-    }
     
     void add(const TeacherDTO& teacher) override {
         teachers.push_back(teacher);
-        cout << "Adicionando "<<teacher.getNome()<<" ao sistema..." <<endl;
+        cout << "Adicionando "<<teacher.getName()<<" ao sistema..." <<endl;
     }
     vector<TeacherDTO> getAllTeachers() const {
         return teachers;
@@ -37,27 +22,27 @@ class TeacherDAO : public AbstractDAO<TeacherDTO> {
         }
         return nullptr; // Caso o aluno não seja encontrado, retorna um ponteiro vazio
     }
-    TeacherDTO* searchId(int id) override {
+    const TeacherDTO* searchId(string id) override {
         for (const auto& teacher : teachers) {
-            if (teacher.id == id) {
+            if (teacher.getID() == id) {
                 return &teacher;
             }
         }
-        return nullptr
+        return nullptr;
     }
     void update(const TeacherDTO& teacher) override {
         for (auto& t : teachers) {
-            if (t.id == teacher.id) {
+            if (t.getID() == teacher.getID()) {
                 t = teacher;
                 return;
             }
         }
     }
 
-    void remove(int id) override {
+    void remove(string id) override {
         teachers.erase(
-            std::remove_if(teachers.begin(), teachers.end(),
-                [id](const TeacherDTO& t) { return t.id == id; }),
+            remove_if(teachers.begin(), teachers.end(),
+                [id](const TeacherDTO& t) { return t.getID() == id; }),
             teachers.end());
     }
 };

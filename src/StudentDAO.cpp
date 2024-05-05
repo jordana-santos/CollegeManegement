@@ -40,7 +40,7 @@ class StudentDAO : public AbstractDAO<StudentDTO> {
     */
     void update(const StudentDTO& student) override {
         for (auto& s : students) {
-            if (s.id == student.id) {
+            if (s.getRA() == student.getRA()) {
                 s = student;
                 return;
             }
@@ -48,10 +48,9 @@ class StudentDAO : public AbstractDAO<StudentDTO> {
     }
 
     void remove(string id) override {
-        int idN = stoi(id);
         students.erase(
             remove_if(students.begin(), students.end(),
-                [idN](const StudentDTO& s) { return s.getRA == id; }),
+                [id](const StudentDTO& s) { return s.getRA() == id; }),
             students.end());
     }
 };

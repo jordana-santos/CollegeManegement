@@ -1,52 +1,20 @@
+#ifndef CLASSDAO_HPP
+#define CLASSDAO_HPP
 
-
-/*
-#include "AbstractDAO.hpp"
-#include "ClassDTO.hpp"
+#include "../include/AbstractDAO.hpp"
+#include "../include/ClassDTO.hpp"
+#include <memory>
+#include <algorithm> 
 
 class ClassDAO : public AbstractDAO<ClassDTO> {
     protected:
     vector<ClassDTO> classes;
 
     public:
-    //getters
-    string getCode() { return code; }
-    string getName() { return name; }
-    string getSyllabus(){ return syllabus; }
-    int getSemesterNumber(){ return semesterNumber; }
-    int getyear(){ return year; }
-    vector<string> getStudentsRa(){ return studentsRA; }
-    map<string, double> getStudentGrades(){ return studentGrades; }
-
-    //setters
-    void setCode(string code){
-        this->code = code;
-    }
-    void setName(string name){
-        this->name = name;
-    }    
-    void setSyllabus(string syllabus){
-        this->syllabus = syllabus;
-    }
-    void setYear(int year){
-        this->year = year;
-    }
-    void setSemesterNumber(int semesterNumber){
-        this->semesterNumber = semesterNumber;
-    }
-    void setStudentsRA(vector<string> studentsRA) {
-        this->studentsRA = studentsRA;
-    }
-    void setStudentGrades(map<string, double> studentGrades) {
-        this->studentGrades = studentGrades;
-    }
-
     void add(const ClassDTO& classInfo) override {
         classes.push_back(classInfo);
-        cout << "Adicionando turma "<<classInfo.getNome()<<" ao sistema..." <<endl;
+        cout << "Adicionando turma "<<classInfo.getName()<<" ao sistema..." <<endl;
     }
-
-    public:
     vector<ClassDTO> getAllClasses() const {
         return classes;
     }
@@ -58,27 +26,27 @@ class ClassDAO : public AbstractDAO<ClassDTO> {
         }
         return nullptr;
     }
-    ClassDTO* searchId(int id) override {
+    const ClassDTO* searchId(string id) override {
         for (const auto& classInfo : classes) {
-            if (classInfo.id == id) {
+            if (classInfo.getCode() == id) {
                 return &classInfo;
             }
         }
-        return nullptr
+        return nullptr;
     }
     void update(const ClassDTO& classInfo) override {
         for (auto& c : classes) {
-            if (c.id == classInfo.id) {
+            if (c.getCode() == classInfo.getCode()) {
                 c = classInfo;
                 return;
             }
         }
     }
 
-    void remove(int id) override {
+    void remove(string id) override {
         classes.erase(
-            std::remove_if(classes.begin(), classes.end(),
-                [id](const ClassDTO& c) { return c.id == id; }),
+            remove_if(classes.begin(), classes.end(),
+                [id](const ClassDTO& c) { return c.getCode() == id; }),
             classes.end());
     }
 
@@ -90,73 +58,5 @@ class ClassDAO : public AbstractDAO<ClassDTO> {
     // Método para adicionar um estudante a uma determinada classe
     void addStudentToClass(const StudentDTO& student, const ClassDTO& classInfo) {
     }*/
-//};
-
-#ifndef CLASSDAO_HPP
-#define CLASSDAO_HPP
-
-#include "include/AbstractDAO.hpp"
-#include "include/ClassDTO.hpp"
-#include "include/College.hpp"
-#include <memory>
-#include <algorithm> 
-
-class ClassDAO : public AbstractDAO<Class> {
-public:
-    void add(const Class& classObject) override {
-        College::getInstance().getClassList().push_back(std::make_shared<Class>(classObject));
-    }
-
-    void update(const Class& classObject) override {
-        auto& classList = College::getInstance().getClassList();
-        for (auto& classPtr : classList) {
-            if (classPtr->getCode() == classObject.getCode()) {
-                *classPtr = classObject;
-                return;
-            }
-        }
-    }
-
-    void remove(const std::string& id) override { // Corrigindo para aceitar uma string como ID
-        auto& classList = College::getInstance().getClassList();
-        classList.erase(
-            std::remove_if(classList.begin(), classList.end(),
-                           [id](const std::shared_ptr<Class>& classPtr) {
-                               return classPtr->getId() == id;
-                           }),
-            classList.end());
-    }
-
-    Class searchId(const std::string& id) override { // Corrigindo para aceitar uma string como ID
-        for (const auto& classPtr : College::getInstance().getClassList()) {
-            if (classPtr->getId() == id) {
-                return *classPtr;
-            }
-        }
-        throw std::runtime_error("Turma não encontrada.");
-    }
-
-    void addProfessorToClass(int classId, const std::string& professorId) {
-        auto& classList = College::getInstance().getClassList();
-        for (auto& classPtr : classList) {
-            if (classPtr->getId() == classId) {
-                classPtr->setTeacherId(professorId);
-                return;
-            }
-        }
-        throw std::runtime_error("Turma não encontrada.");
-    }
-
-    void addStudentToClass(int classId, const std::string& studentRA) {
-        auto& classList = College::getInstance().getClassList();
-        for (auto& classPtr : classList) {
-            if (classPtr->getId() == classId) {
-                classPtr->addStudentRA(studentRA);
-                return;
-            }
-        }
-        throw std::runtime_error("Turma não encontrada.");
-    }
 };
-
 #endif
