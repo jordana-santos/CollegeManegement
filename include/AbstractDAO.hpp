@@ -1,3 +1,5 @@
+#ifndef ABSTRACT_HPP
+#define ABSTRACT_HPP
 #include <iostream>
 #include <vector>
 #include <string>
@@ -15,3 +17,5 @@ class AbstractDAO {
     virtual void remove(int id) = 0;
     virtual T searchId(int id) = 0;
 };
+
+#endif
