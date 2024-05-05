@@ -1,3 +1,6 @@
+
+
+/*
 #include "AbstractDAO.hpp"
 #include "ClassDTO.hpp"
 
@@ -55,4 +58,73 @@ class ClassDAO : public AbstractDAO<ClassDTO> {
     // Método para adicionar um estudante a uma determinada classe
     void addStudentToClass(const StudentDTO& student, const ClassDTO& classInfo) {
     }*/
+//};
+
+#ifndef CLASSDAO_HPP
+#define CLASSDAO_HPP
+
+#include "include/AbstractDAO.hpp"
+#include "include/ClassDTO.hpp"
+#include "include/College.hpp"
+#include <memory>
+#include <algorithm> 
+
+class ClassDAO : public AbstractDAO<Class> {
+public:
+    void add(const Class& classObject) override {
+        College::getInstance().getClassList().push_back(std::make_shared<Class>(classObject));
+    }
+
+    void update(const Class& classObject) override {
+        auto& classList = College::getInstance().getClassList();
+        for (auto& classPtr : classList) {
+            if (classPtr->getCode() == classObject.getCode()) {
+                *classPtr = classObject;
+                return;
+            }
+        }
+    }
+
+    void remove(const std::string& id) override { // Corrigindo para aceitar uma string como ID
+        auto& classList = College::getInstance().getClassList();
+        classList.erase(
+            std::remove_if(classList.begin(), classList.end(),
+                           [id](const std::shared_ptr<Class>& classPtr) {
+                               return classPtr->getId() == id;
+                           }),
+            classList.end());
+    }
+
+    Class searchId(const std::string& id) override { // Corrigindo para aceitar uma string como ID
+        for (const auto& classPtr : College::getInstance().getClassList()) {
+            if (classPtr->getId() == id) {
+                return *classPtr;
+            }
+        }
+        throw std::runtime_error("Turma não encontrada.");
+    }
+
+    void addProfessorToClass(int classId, const std::string& professorId) {
+        auto& classList = College::getInstance().getClassList();
+        for (auto& classPtr : classList) {
+            if (classPtr->getId() == classId) {
+                classPtr->setTeacherId(professorId);
+                return;
+            }
+        }
+        throw std::runtime_error("Turma não encontrada.");
+    }
+
+    void addStudentToClass(int classId, const std::string& studentRA) {
+        auto& classList = College::getInstance().getClassList();
+        for (auto& classPtr : classList) {
+            if (classPtr->getId() == classId) {
+                classPtr->addStudentRA(studentRA);
+                return;
+            }
+        }
+        throw std::runtime_error("Turma não encontrada.");
+    }
 };
+
+#endif

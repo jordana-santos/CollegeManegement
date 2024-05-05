@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include "StudentDTO.hpp"
-#include "SeacherDTO.hpp"
+#include "TeacherDTO.hpp"
 #include "ClassDTO.hpp"
 
 using namespace std;
@@ -42,6 +42,7 @@ const class College {
         void setClassList() {
             this->classes = classes;
         }
+
 
 };
 
