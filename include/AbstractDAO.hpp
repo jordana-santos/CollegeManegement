@@ -17,7 +17,7 @@ class AbstractDAO {
     virtual void add(const T& tempObject) = 0;
     virtual void update(const T& tempObject) = 0;
     virtual void remove(string id) = 0;
-    virtual T* searchId(string id) = 0;
+    virtual const T* searchId(string id) = 0;
 };
 
 #endif

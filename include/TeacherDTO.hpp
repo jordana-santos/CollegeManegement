@@ -15,20 +15,21 @@ class TeacherDTO: public Person{
         TeacherDTO(string id):
         id(id), name(name){}
 
-    //get
-    string getID();
-    string getName();
+    //getters
+    string getID() const{
+        return id;
+    }
+    string getName() const{
+        return name;
+    }
 
-    //set
-    void setID(string id);
-    void setName(string name);
-
-    void add(const TeacherDTO& teacher) override;
-    vector<TeacherDTO> getAllTeachers() const;
-    TeacherDTO* searchStudentName(const string& name);
-    TeacherDTO* searchId(int id) override;
-    void update(const TeacherDTO& teacher) override;
-    void remove(int id) override;
+    // setters
+    void setID(string id){
+        this->id = id;
+    }
+    void setName(string name){
+        this->name = name;
+    }
 };
 
 #endif

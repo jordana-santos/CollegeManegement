@@ -3,47 +3,42 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "StudentDTO.hpp"
-#include "TeacherDTO.hpp"
-#include "ClassDTO.hpp"
+#include <memory>
+#include <algorithm> 
+#include "../src/StudentDAO.cpp"
+#include "../src/TeacherDAO.cpp"
+#include "../src/ClassDAO.cpp"
 
 using namespace std;
 
-const class College {
-
+class College {
     protected:
-        vector<shared_ptr<studentDTO>> students;
-        vector<shared_ptr<teacherDTO>> teachers;
-        vector<shared_ptr<classDTO>> classes;
+        vector<shared_ptr<StudentDTO>> students;
+        vector<shared_ptr<TeacherDTO>> teachers;
+        vector<shared_ptr<ClassDTO>> classes;
 
     public:
-        //get
-        vector<shared_ptr<studentDTO>>& getStudentList() {
+        //getters
+        vector<shared_ptr<StudentDTO>>& getStudentList() {
             return students;
         }
-
-        vector<shared_ptr<teacherDTO>>& getTeacherList() {
+        vector<shared_ptr<TeacherDTO>>& getTeacherList() {
             return teachers;
         }
-
-        vector<shared_ptr<classDTO>>& getClassList() {
+        vector<shared_ptr<ClassDTO>>& getClassList() {
             return classes;
         }
 
-        //set
+        //setters
         void setStudentList() {
             this->students = students;
         }
-
         void setTeacherList() {
             this->teachers = teachers;
         }
-
         void setClassList() {
             this->classes = classes;
         }
-
-
 };
 
 #endif
