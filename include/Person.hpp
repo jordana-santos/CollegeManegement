@@ -5,45 +5,38 @@
 
 using namespace std;
 
-class Person {
-    
-    private:
+class Person {    
+    protected:
         string name;
         int age;
         string phone;
 
     public:
-        Person();
-        
+        Person();        
         Person(string name, int age, string phone):
         name(name), age(age), phone(phone){}
 
-        // get
-        string getNome(){
+        // getters
+        string getName() const{
             return name;
         }
-
-        int getAge(){
+        int getAge() const{
             return age;
         }
-
-        string getPhone(){
+        string getPhone() const{
             return phone;
         }
 
-        //set
-        void setNome(string name){
+        //setters
+        void setName(string name){
             this->name = name;
         }
-
         void setAge(int age){
             this->age = age;
         }
-
         void setPhone(string phone){
             this->phone = phone;
         }
-
 };
 
 #endif

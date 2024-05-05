@@ -4,7 +4,7 @@
 using namespace std;
 
 class SystemInfo {
-private:
+protected:
     string version;
     string author;
 

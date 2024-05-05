@@ -6,33 +6,29 @@
 
 using namespace std;
 
-class Aluno: public Person{
-
-
-    private:
+class StudentDTO: public Person{
+    protected:
         string ra;
         string course;
 
     public:
-        Aluno(string ra, string course):
+        StudentDTO(string ra, string course): Person(name, age, phone),
         ra(ra), course(course){}
 
-    //get
-    string getRA(){
+    //getters
+    string getRA() const{
         return ra;
     }
-
-    string getCourse(){
+    string getCourse() const{
         return course;
     }
 
-    //set
+    //setters
     void setRA(string ra){
         this->ra = ra;
     }
-
     void setCourse(string course){
-    this->course = course;
+        this->course = course;
     }
 
 };

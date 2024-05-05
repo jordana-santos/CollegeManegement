@@ -1,5 +1,5 @@
-#ifndef CLASS_HPP
-#define CLASS_HPP
+#ifndef CLASSDTO_HPP
+#define CLASSDTO_HPP
 #include <iostream>
 #include <string>
 #include <vector>
@@ -9,61 +9,34 @@
 
 using namespace std;
 
-class Class: public Semester, Subject{
-    private:
+class ClassDTO: public Semester, Subject{
+    protected:
         string code, name, syllabus, teacherId;
         int semesterNumber, year;
         vector<string> studentsRA;
         map<string, double> studentGrades;
 
     public:
-        Class(string code, string name, string syllabus, int semesterNumber, int year):
+        ClassDTO(string code, string name, string syllabus, int semesterNumber, int year):
         code(code), name(name), syllabus(syllabus), semesterNumber(semesterNumber), year(year){}
 
         //get
-        string getCode() { return code; }
-
-        string getName() { return name; }
-
-        string getSyllabus(){ return syllabus; }
-
-        int getSemesterNumber(){ return semesterNumber; }
-
-        int getyear(){ return year; }
-
-        vector<string> getStudentsRa(){ return studentsRA; }
-
-        map<string, double> getStudentGrades(){ return studentGrades; }
+        string getCode();
+        string getName();
+        string getSyllabus();
+        int getSemesterNumber();
+        int getyear();
+        vector<string> getStudentsRa();
+        map<string, double> getStudentGrades();
 
         //set
-        void setCode(string code){
-            this->code = code;
-        }
-
-        void setName(string name){
-            this->name = name;
-        }
-        
-        void setSyllabus(string syllabus){
-            this->syllabus = syllabus;
-        }
-
-        void setYear(int year){
-            this->year = year;
-        }
-
-        void setSemesterNumber(int semesterNumber){
-            this->semesterNumber = semesterNumber;
-        }
-
-        void setStudentsRA(vector<string> studentsRA) {
-            this->studentsRA = studentsRA;
-        }
-
-        void setStudentGrades(map<string, double> studentGrades) {
-            this->studentGrades = studentGrades;
-        }
-
+        void setCode(string code);
+        void setName(string name);        
+        void setSyllabus(string syllabus);
+        void setYear(int year);
+        void setSemesterNumber(int semesterNumber);
+        void setStudentsRA(vector<string> studentsRA);
+        void setStudentGrades(map<string, double> studentGrades);
 };
 
 #endif
