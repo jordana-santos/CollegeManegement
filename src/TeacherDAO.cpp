@@ -3,35 +3,38 @@
 
 class TeacherDAO : public AbstractDAO<TeacherDTO> {
     protected:
-    vector<TeacherDTO> teachers;
+    vector<TeacherDTO> teachersList;
 
     public:
+    TeacherDAO(){
+        this->teachersList = {};
+    }
     
     void add(const TeacherDTO& teacher) override {
-        teachers.push_back(teacher);
+        teachersList.push_back(teacher);
         cout << "Adicionando "<<teacher.getName()<<" ao sistema..." <<endl;
     }
-    vector<TeacherDTO> getAllTeachers() const {
-        return teachers;
+    vector<TeacherDTO> getAllteachersList() const {
+        return teachersList;
     }
-    TeacherDTO* searchStudentName(const string& name) {
-        for (auto& teacher : teachers) {
+    shared_ptr<TeacherDTO> searchStudentName(const string& name) {
+        for (auto& teacher : teachersList) {
             if (teacher.getName() == name) {
-                return &teacher;
+                return make_shared<TeacherDTO>(teacher);
             }
         }
         return nullptr; // Caso o aluno não seja encontrado, retorna um ponteiro vazio
     }
-    const TeacherDTO* searchId(string id) override {
-        for (const auto& teacher : teachers) {
+    const shared_ptr<TeacherDTO> searchId(string id) override {
+        for (const auto& teacher : teachersList) {
             if (teacher.getID() == id) {
-                return &teacher;
+                return make_shared<TeacherDTO>(teacher);
             }
         }
         return nullptr;
     }
     void update(const TeacherDTO& teacher) override {
-        for (auto& t : teachers) {
+        for (auto& t : teachersList) {
             if (t.getID() == teacher.getID()) {
                 t = teacher;
                 return;
@@ -40,9 +43,9 @@ class TeacherDAO : public AbstractDAO<TeacherDTO> {
     }
 
     void remove(string id) override {
-        teachers.erase(
-            remove_if(teachers.begin(), teachers.end(),
+        teachersList.erase(
+            remove_if(teachersList.begin(), teachersList.end(),
                 [id](const TeacherDTO& t) { return t.getID() == id; }),
-            teachers.end());
+            teachersList.end());
     }
 };

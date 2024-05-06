@@ -55,7 +55,7 @@ void Menu::subMenuReport() {
     cout << "4. Student ranking in a subject" << endl;
     cout << "5. Go back to main menu" << endl;
     cout << "----------------------" << endl;
-    cout << "Chose an option: ";
+    cout << "Chose an option: "<<endl;
 }
 
 void Menu::menuChoice(int choice) {

@@ -3,28 +3,31 @@
 
 class StudentDAO : public AbstractDAO<StudentDTO> {
     protected:
-    vector<StudentDTO> students;
+    vector<StudentDTO> studentsList;
 
     public:
+    StudentDAO(){
+        this->studentsList = {};
+    }
     void add(const StudentDTO& student) override {
-        students.push_back(student);
+        studentsList.push_back(student);
         cout << "Adicionando "<<student.getName()<<" ao sistema..." <<endl;
     }
-    vector<StudentDTO> getAllStudents() const {
-        return students;
+    vector<StudentDTO> getAllstudentsList() const {
+        return studentsList;
     }
-    StudentDTO* searchStudentName(const string& name) {
-        for (auto& student : students) {
+    shared_ptr<StudentDTO> searchStudentName(const string& name) {
+        for (auto& student : studentsList) {
             if (student.getName() == name) {
-                return &student;
+                return make_shared<StudentDTO>(student);
             }
         }
         return nullptr; // Caso o aluno não seja encontrado, retorna um ponteiro vazio
     }
-    StudentDTO* searchId(int id) {
-        for ( auto& student : students) {
+    const shared_ptr<StudentDTO> searchId(string id) override{
+        for (const auto& student : studentsList) {
             if (student.getRA() == id) {
-                return &student;
+                return make_shared<StudentDTO>(student);;
             }
         }
         return nullptr;
@@ -38,8 +41,8 @@ class StudentDAO : public AbstractDAO<StudentDTO> {
             cout << "\nAluno com nome '" << searchName << "' não encontrado." << endl;
         }
     */
-    void update(const StudentDTO& student) override {
-        for (auto& s : students) {
+    void update(const StudentDTO& student) {
+        for (auto& s : studentsList) {
             if (s.getRA() == student.getRA()) {
                 s = student;
                 return;
@@ -47,10 +50,10 @@ class StudentDAO : public AbstractDAO<StudentDTO> {
         }
     }
 
-    void remove(int id)  {
-        students.erase(
-            std::remove_if(students.begin(), students.end(),
+    void remove(string id) override {
+        studentsList.erase(
+            remove_if(studentsList.begin(), studentsList.end(),
                 [id](const StudentDTO& s) { return s.getRA() == id; }),
-            students.end());
+            studentsList.end());
     }
 };

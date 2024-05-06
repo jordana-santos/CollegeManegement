@@ -8,34 +8,37 @@
 
 class ClassDAO : public AbstractDAO<ClassDTO> {
     protected:
-    vector<ClassDTO> classes;
+    vector<ClassDTO> classesList;
 
     public:
+    ClassDAO(){
+        this->classesList = {};
+    }
     void add(const ClassDTO& classInfo) override {
-        classes.push_back(classInfo);
+        classesList.push_back(classInfo);
         cout << "Adicionando turma "<<classInfo.getName()<<" ao sistema..." <<endl;
     }
-    vector<ClassDTO> getAllClasses() const {
-        return classes;
+    vector<ClassDTO> getAllclassesList() const {
+        return classesList;
     }
-    ClassDTO* searchClassName(const string& name) {
-        for (auto& classInfo : classes) {
+    shared_ptr<ClassDTO> searchClassName(const string& name) {
+        for (auto& classInfo : classesList) {
             if (classInfo.getName() == name) {
-                return &classInfo;
+                return make_shared<ClassDTO>(classInfo);
             }
         }
         return nullptr;
     }
-    const ClassDTO* searchId(string id) override {
-        for (const auto& classInfo : classes) {
+    const shared_ptr<ClassDTO> searchId(string id) override {
+        for (const auto& classInfo : classesList) {
             if (classInfo.getCode() == id) {
-                return &classInfo;
+                return make_shared<ClassDTO>(classInfo);
             }
         }
         return nullptr;
     }
     void update(const ClassDTO& classInfo) override {
-        for (auto& c : classes) {
+        for (auto& c : classesList) {
             if (c.getCode() == classInfo.getCode()) {
                 c = classInfo;
                 return;
@@ -44,10 +47,10 @@ class ClassDAO : public AbstractDAO<ClassDTO> {
     }
 
     void remove(string id) override {
-        classes.erase(
-            remove_if(classes.begin(), classes.end(),
+        classesList.erase(
+            remove_if(classesList.begin(), classesList.end(),
                 [id](const ClassDTO& c) { return c.getCode() == id; }),
-            classes.end());
+            classesList.end());
     }
 
     /*  A SER DESENVOLVIDO NA ENTREGA COMPLETA

@@ -1,12 +1,13 @@
 #include <iostream>
 #include "Controller.cpp"
+#include "../include/Menu.hpp"
 
 using namespace std;
 
 int main() {
-    int choice;
+    Controller controller;
 
-    Controller :: displayMainMenu(choice);
+    controller.displayMainMenu();
 
     return 0;
 }

@@ -1,19 +1,19 @@
 #include "StudentDAO.cpp"
 #include "TeacherDAO.cpp"
-#include "../include/Subject.hpp"
-#include "Menu.cpp"
+#include "ClassDAO.cpp"
+#include "../include/Menu.hpp"
 
 class Controller {
-protected:
-
+    protected:
     Menu menu;
     StudentDAO student;
     TeacherDAO teacher;
-    Subject subject;
+    ClassDAO classInfo;
 
-public:
-
-    void displayMainMenu(int choice) {
+    public:
+    Controller() : student(), teacher(), classInfo() {}
+    void displayMainMenu() {
+        int choice;
         menu.showMenu();   
         cin >> choice; 
         menu.menuChoice(choice);
@@ -27,7 +27,7 @@ public:
         menu.subMenuReport();
     }
 
-    void addStudent(const StudentDTO& student) {
+    /* void addStudent(const StudentDTO& student) {
         this->student.add(student);
     }
 
@@ -35,7 +35,7 @@ public:
         this->teacher.add(teacher);
     }
 
-    void addSubject(const Subject& subject) {
-        this->subject.add(subject);
-    }
+    void addSubject(const ClassDAO& classInfo) {
+        this->classInfo.add(classInfo);
+    } */
 };
