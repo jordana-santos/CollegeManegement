@@ -1,5 +1,5 @@
-#include "AbstractDAO.hpp"
-#include "StudentDTO.hpp"
+#include "../include/AbstractDAO.hpp"
+#include "../include/StudentDTO.hpp"
 
 class StudentDAO : public AbstractDAO<StudentDTO> {
     protected:
@@ -8,7 +8,7 @@ class StudentDAO : public AbstractDAO<StudentDTO> {
     public:
     void add(const StudentDTO& student) override {
         students.push_back(student);
-        cout << "Adicionando "<<student.getNome()<<" ao sistema..." <<endl;
+        cout << "Adicionando "<<student.getName()<<" ao sistema..." <<endl;
     }
     vector<StudentDTO> getAllStudents() const {
         return students;
@@ -21,9 +21,9 @@ class StudentDAO : public AbstractDAO<StudentDTO> {
         }
         return nullptr; // Caso o aluno não seja encontrado, retorna um ponteiro vazio
     }
-    StudentDTO* searchId(int id) override {
-        for (const auto& student : students) {
-            if (student.id == id) {
+    StudentDTO* searchId(int id) {
+        for ( auto& student : students) {
+            if (student.getRA() == id) {
                 return &student;
             }
         }
@@ -40,17 +40,17 @@ class StudentDAO : public AbstractDAO<StudentDTO> {
     */
     void update(const StudentDTO& student) override {
         for (auto& s : students) {
-            if (s.id == student.id) {
+            if (s.getRA() == student.getRA()) {
                 s = student;
                 return;
             }
         }
     }
 
-    void remove(int id) override {
+    void remove(int id)  {
         students.erase(
             std::remove_if(students.begin(), students.end(),
-                [id](const StudentDTO& s) { return s.id == id; }),
+                [id](const StudentDTO& s) { return s.getRA() == id; }),
             students.end());
     }
 };

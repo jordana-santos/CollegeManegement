@@ -1,16 +1,12 @@
-#include<iostream>
-#include "Menu.hpp"
+#include <iostream>
+#include "Controller.cpp"
 
 using namespace std;
 
 int main() {
-    //variaveis
-    Menu menu;
     int choice;
-    
-    menu.showMenu();
-    cin >> choice;
-    menu.menuChoice(choice); 
+
+    Controller :: displayMainMenu(choice);
 
     return 0;
 }

@@ -21,9 +21,9 @@ class StudentDAO : public AbstractDAO<StudentDTO> {
         }
         return nullptr; // Caso o aluno não seja encontrado, retorna um ponteiro vazio
     }
-    const StudentDTO* searchId(string RA) override {
-        for (const auto& student : students) {
-            if (student.getRA() == RA) {
+    StudentDTO* searchId(int id) {
+        for ( auto& student : students) {
+            if (student.getRA() == id) {
                 return &student;
             }
         }
@@ -47,9 +47,9 @@ class StudentDAO : public AbstractDAO<StudentDTO> {
         }
     }
 
-    void remove(string id) override {
+    void remove(int id)  {
         students.erase(
-            remove_if(students.begin(), students.end(),
+            std::remove_if(students.begin(), students.end(),
                 [id](const StudentDTO& s) { return s.getRA() == id; }),
             students.end());
     }
