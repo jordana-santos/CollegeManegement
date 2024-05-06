@@ -8,15 +8,15 @@ using namespace std;
 
 class StudentDTO: public Person{
     protected:
-        int ra;
+        string ra;
         string course;
 
     public:
-        StudentDTO(int ra, string course): Person(name, age, phone),
+        StudentDTO(string ra, string course): Person(name, age, phone),
         ra(ra), course(course){}
 
     //getters
-    int getRA() const{
+    string getRA() const{
         return ra;
     }
     string getCourse() const{
@@ -24,7 +24,7 @@ class StudentDTO: public Person{
     }
 
     //setters
-    void setRA(int ra){
+    void setRA(string ra){
         this->ra = ra;
     }
     void setCourse(string course){
