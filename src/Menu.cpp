@@ -4,7 +4,7 @@
 using namespace std;
 
 void Menu::showMenu() {
-    cout << "------ menu ------" << endl;
+    cout << "------ Main Menu ------" << endl;
     cout << "1. Students" << endl;
     cout << "2. Teachers" << endl;
     cout << "3. Subjects" << endl;
@@ -12,50 +12,50 @@ void Menu::showMenu() {
     cout << "5. Help" << endl;
     cout << "6. Leave Program" << endl;
     cout << "------------------" << endl;
-    cout << "Chose an option: ";
+    cout << "Pick an option: ";
 }
 
 void Menu::subMenuStudent() {
-    cout << "----------------------" << endl;
+    cout << "----------- Student Menu -----------" << endl;
     cout << "1. Register new Student" << endl;
     cout << "2. See all students" << endl;
     cout << "3. Search by RA" << endl;
     cout << "4. Update registrations" << endl;
     cout << "5. Go back to main menu" << endl;
     cout << "----------------------" << endl;
-    cout << "Chose an option: ";
+    cout << "Pick an option: ";
 }
 
 void Menu::subMenuTeacher() {
-    cout << "----------------------" << endl;
+    cout << "----------- Teacher Menu -----------" << endl;
     cout << "1. Register new Teacher" << endl;
     cout << "2. See all teachers" << endl;
     cout << "3. Update registrations" << endl;
     cout << "4. Go back to main menu" << endl;
     cout << "----------------------" << endl;
-    cout << "Chose an option: ";
+    cout << "Pick an option: ";
 }
 
 void Menu::subMenuSubject() {
-    cout << "----------------------" << endl;
+    cout << "----------- Subject Menu -----------" << endl;
     cout << "1. Register new subject" << endl;
     cout << "2. See all subjects" << endl;
     cout << "3. Link subject with teacher and students" << endl;
     cout << "4. Update registrations" << endl;
     cout << "5. Go back to main menu" << endl;
     cout << "----------------------" << endl;
-    cout << "Chose an option: ";
+    cout << "Pick an option: ";
 }
 
 void Menu::subMenuReport() {
-    cout << "----------------------" << endl;
+    cout << "----------- Reports Menu -----------" << endl;
     cout << "1. See all students from a subject" << endl;
     cout << "2. Mean grade of a subject" << endl;
     cout << "3. Students with an especific grade in a subject" << endl;
     cout << "4. Student ranking in a subject" << endl;
     cout << "5. Go back to main menu" << endl;
     cout << "----------------------" << endl;
-    cout << "Chose an option: "<<endl;
+    cout << "Pick an option: "<<endl;
 }
 
 void Menu::menuChoice(int choice) {
@@ -73,7 +73,7 @@ void Menu::menuChoice(int choice) {
             subMenuReport();
             break;
         case 5:
-            cout << "You chose 'Help'." << endl;
+            cout << "You Pick 'Help'." << endl;
             break;
         case 6:
             exit(0);
