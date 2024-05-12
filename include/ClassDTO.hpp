@@ -13,10 +13,11 @@ class ClassDTO: public Semester, Subject{
     protected:
         string code, name, syllabus, teacherId;
         int semesterNumber, year;
-        vector<string> studentsRA;
+        map<string, string> studentsRA;
         map<string, double> studentGrades;
 
     public:
+        ClassDTO(){};
         ClassDTO(string code, string name, string syllabus, int semesterNumber, int year):
         code(code), name(name), syllabus(syllabus), semesterNumber(semesterNumber), year(year){}
 
@@ -26,7 +27,7 @@ class ClassDTO: public Semester, Subject{
         string getSyllabus() const { return syllabus; }
         int getSemesterNumber() const { return semesterNumber; }
         int getyear() const { return year; }
-        vector<string> getStudentsRa() const { return studentsRA; }
+        map<string, string> getStudentsRa() const { return studentsRA; }
         map<string, double> getStudentGrades() const { return studentGrades; }
 
         //setters
@@ -45,7 +46,7 @@ class ClassDTO: public Semester, Subject{
         void setSemesterNumber(int semesterNumber){
             this->semesterNumber = semesterNumber;
         }
-        void setStudentsRA(vector<string> studentsRA) {
+        void setStudentsRA(map<string, string> studentsRA) {
             this->studentsRA = studentsRA;
         }
         void setStudentGrades(map<string, double> studentGrades) {

@@ -12,9 +12,8 @@ class Person {
         string phone;
 
     public:
-        Person();        
-        Person(string name, int age, string phone):
-        name(name), age(age), phone(phone){}
+        Person(){};        
+        Person(string name, int age, string phone):name(name), age(age), phone(phone){};
 
         // getters
         string getName() const{

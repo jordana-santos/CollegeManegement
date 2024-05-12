@@ -2,6 +2,7 @@
 #define ALUNO_HPP
 #include <iostream>
 #include <string>
+#include <map>
 #include "Person.hpp"
 
 using namespace std;
@@ -12,8 +13,8 @@ class StudentDTO: public Person{
         string course;
 
     public:
-        StudentDTO(string ra, string course): Person(name, age, phone),
-        ra(ra), course(course){}
+    StudentDTO(): Person(), ra("0"), course(""){};
+    StudentDTO(string ra, string course): Person(name, age, phone), ra(ra), course(course){}
 
     //getters
     string getRA() const{
