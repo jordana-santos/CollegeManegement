@@ -14,6 +14,7 @@ public:
     void subMenuTeacher();
     void subMenuSubject();
     void subMenuReport();
+    void subMenuHelp();
     void menuChoice(int choice);
     void studentChoice();
     void teacherChoice();

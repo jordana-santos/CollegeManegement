@@ -1,8 +1,10 @@
 #include <iostream>
 #include "../include/Menu.hpp"
+#include "../include/SysInfo.hpp"
 #include "StudentDAO.cpp"
 #include "TeacherDAO.cpp"
 #include "ClassDAO.cpp"
+
 
 using namespace std;
 
@@ -80,8 +82,8 @@ void Menu::menuChoice(int choice) {
             subMenuReport();
             break;
         case 5:
-            //essa classe n existe, faria mais sentido substituir por sysInfo
-            cout << "You Pick 'Help'." << endl;
+            cout << "Version: " << SystemInfo::getVersion() << endl;
+            SystemInfo::showAuthors();
             break;
         case 6:
             exit(0);
@@ -145,7 +147,7 @@ void Menu::teacherChoice() {
     }
 }
 
-void Menu::subjectChoice() {
+void Menu::subjectChoice() { //subject é o class
     //falta colocar os parametros nos metodos abaixo
     cin >> selected;
     switch (selected) {
