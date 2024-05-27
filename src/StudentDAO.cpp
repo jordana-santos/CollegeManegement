@@ -9,13 +9,16 @@ class StudentDAO : public AbstractDAO<StudentDTO> {
     StudentDAO(){
         this->studentsList = map<string, StudentDTO>();
     }
+
     void add(const StudentDTO& student) override {
         studentsList[student.getRA()] = student;
         cout << "Adicionando "<<student.getName()<<" ao sistema..." <<endl;
     }
+
     map<string, StudentDTO> getAllStudentsList() const {
         return studentsList;
-    }/*
+    }
+    /*
     shared_ptr<StudentDTO> searchStudentName(const string& name) {
         for (auto& student : studentsList) {
             if (student.getName() == name) {

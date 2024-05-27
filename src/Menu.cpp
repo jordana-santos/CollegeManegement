@@ -1,5 +1,8 @@
 #include <iostream>
 #include "../include/Menu.hpp"
+#include "StudentDAO.cpp"
+#include "TeacherDAO.cpp"
+#include "ClassDAO.cpp"
 
 using namespace std;
 
@@ -21,7 +24,8 @@ void Menu::subMenuStudent() {
     cout << "2. See all students" << endl;
     cout << "3. Search by RA" << endl;
     cout << "4. Update registrations" << endl;
-    cout << "5. Go back to main menu" << endl;
+    cout << "5. Remove Student" << endl;
+    cout << "6. Go back to main menu" << endl;
     cout << "----------------------" << endl;
     cout << "Pick an option: ";
 }
@@ -31,7 +35,8 @@ void Menu::subMenuTeacher() {
     cout << "1. Register new Teacher" << endl;
     cout << "2. See all teachers" << endl;
     cout << "3. Update registrations" << endl;
-    cout << "4. Go back to main menu" << endl;
+    cout << "4. Remove Teacher" << endl;
+    cout << "5. Go back to main menu" << endl;
     cout << "----------------------" << endl;
     cout << "Pick an option: ";
 }
@@ -40,9 +45,11 @@ void Menu::subMenuSubject() {
     cout << "----------- Subject Menu -----------" << endl;
     cout << "1. Register new subject" << endl;
     cout << "2. See all subjects" << endl;
-    cout << "3. Link subject with teacher and students" << endl;
-    cout << "4. Update registrations" << endl;
-    cout << "5. Go back to main menu" << endl;
+    cout << "3. Link a teacher to a subject" << endl;
+    cout << "4. Link a Student to a subject" << endl;
+    cout << "5. Update registrations" << endl;
+    cout << "6. Remove Subject" << endl;
+    cout << "7. Go back to main menu" << endl;
     cout << "----------------------" << endl;
     cout << "Pick an option: ";
 }
@@ -73,6 +80,7 @@ void Menu::menuChoice(int choice) {
             subMenuReport();
             break;
         case 5:
+            //essa classe n existe, faria mais sentido substituir por sysInfo
             cout << "You Pick 'Help'." << endl;
             break;
         case 6:
@@ -85,21 +93,25 @@ void Menu::menuChoice(int choice) {
 }
 
 void Menu::studentChoice() {
+    //falta colocar os parametros nos metodos abaixo
     cin >> selected;
     switch (selected) {
         case 1:
-            cout << "1. Register new Student" << endl;
+            StudentDAO::add();
             break;
         case 2:
-            cout << "2. See all students" << endl;
+            StudentDAO::getAllStudentsList();
             break;
         case 3:
-            cout << "3. Search by RA" << endl;
+            StudentDAO::searchId();
             break;
         case 4:
-            cout << "4. Update registrations" << endl;
+            StudentDAO::update();
             break;
         case 5:
+            StudentDAO::remove();
+            break;
+        case 6: 
             showMenu();
             break;
         default:
@@ -109,40 +121,20 @@ void Menu::studentChoice() {
 }
 
 void Menu::teacherChoice() {
+    //falta colocar os parametros nos metodos abaixo
     cin >> selected;
     switch (selected) {
         case 1:
-            cout << "1. Register new Teacher" << endl;
+            TeacherDAO::add();
             break;
         case 2:
-            cout << "2. See all teachers" << endl;
+            TeacherDAO::getAllTeachersList();
             break;
         case 3:
-            cout << "3. Update registrations" << endl;
+            TeacherDAO::update();
             break;
         case 4:
-            showMenu();
-            break;
-        default:
-            cout << "Invalid Option." << endl;
-            break;
-    }
-}
-
-void Menu::subjectChoice() {
-    cin >> selected;
-    switch (selected) {
-        case 1:
-            cout << "1. Register new subject" << endl;
-            break;
-        case 2:
-            cout << "2. See all subjects" << endl;
-            break;
-        case 3:
-            cout << "3. Link subject with teacher and students" << endl;
-            break;
-        case 4:
-            cout << "4. Update registrations" << endl;
+            TeacherDAO::remove();
             break;
         case 5:
             showMenu();
@@ -153,7 +145,41 @@ void Menu::subjectChoice() {
     }
 }
 
+void Menu::subjectChoice() {
+    //falta colocar os parametros nos metodos abaixo
+    cin >> selected;
+    switch (selected) {
+        case 1:
+            ClassDAO::add();
+            break;
+        case 2:
+            ClassDAO::getAllclassesList();
+            break;
+        case 3:
+            cout << "3. Link a teacher to a subject" << endl;
+            //falta fazer esse metodo la em ClassDAO
+            break;
+        case 4:
+            cout << "4. Link a Student to a subject" << endl;
+            //falta fazer esse metodo la em ClassDAO
+            break;
+        case 5:
+            ClassDAO::update();
+            break;
+        case 6:
+            ClassDAO::remove();
+            break;
+        case 7:
+            showMenu();
+            break;
+        default:
+            cout << "Invalid Option." << endl;
+            break;
+    }
+}
+
 void Menu::reportChoice() {
+    //nenhuma das classes tem metodo que faz as coisas abaixo
     cin >> selected;
     switch (selected) {
         case 1:
@@ -176,4 +202,3 @@ void Menu::reportChoice() {
             break;
     }
 }
-

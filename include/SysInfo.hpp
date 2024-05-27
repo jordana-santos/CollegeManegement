@@ -12,14 +12,13 @@ public:
     SystemInfo(const string& version, const string& author):
      version(version), author(author) {}
     
-    //get
-    string getVersion() const { 
-        return version; 
-    }
+    //getters
+    string getVersion() const {  return version; }
+    string getAuthor() const { return author; }
 
-    string getAuthor() const { 
-        return author; 
-    }
+    //setters
+    void setVersion(string version){ this->version = version; }
+    void setAuthor(string author){ this->author = author; }
 };
 
 #endif

@@ -6,44 +6,27 @@
 using namespace std;
 
 class Semester {
-    
     protected:
         string id;
         int year;
         int semesterNumber;
 
     public:
-        Semester();
-        
+        Semester(){};
         Semester(string id, int year, int semesterNumber):
         id(id), year(year), semesterNumber(semesterNumber){}
 
-        // get
-        string getId(){
-            return id;
-        }
+        // getters
+        string getId(){ return id; }
+        int getYear(){ return year; }
+        int getSemesterNumber(){ return semesterNumber; }
 
-        int getYear(){
-            return year;
-        }
-
-        int getSemesterNumber(){
-            return semesterNumber;
-        }
-
-        //set
-        void setId(string id){
-            this->id = id;
-        }
-
-        void setYear(int year){
-            this->year = year;
-        }
-
+        //setters
+        void setId(string id){ this->id = id; }
+        void setYear(int year){ this->year = year; }
         void setSemesterNumber(int semesterNumber){
             this->semesterNumber = semesterNumber;
         }
-
 };
 
 #endif

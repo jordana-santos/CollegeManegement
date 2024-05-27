@@ -10,21 +10,16 @@ using namespace std;
 class TeacherDTO: public Person{
     protected:
         string id;
-        string name;
 
     public:
         TeacherDTO(): Person(), id("0"){};
         TeacherDTO(string id) : Person(name, age, phone), id(id){};
 
     //getters
-    string getID() const{
-        return id;
-    }
+    string getID() const{ return id; }
 
     // setters
-    void setID(string id){
-        this->id = id;
-    }
+    void setID(string id){ this->id = id; }
 };
 
 #endif

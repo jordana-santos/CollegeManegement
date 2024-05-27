@@ -19,7 +19,7 @@ class ClassDTO: public Semester, Subject{
     public:
         ClassDTO(){};
         ClassDTO(string code, string name, string syllabus, int semesterNumber, int year):
-        code(code), name(name), syllabus(syllabus), semesterNumber(semesterNumber), year(year){}
+        code(code), name(name), syllabus(syllabus), semesterNumber(semesterNumber), year(year){};
 
         //getters
         string getCode() const { return code; }

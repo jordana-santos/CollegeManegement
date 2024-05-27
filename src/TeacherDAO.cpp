@@ -14,6 +14,7 @@ class TeacherDAO : public AbstractDAO<TeacherDTO> {
         teachersList[teacher.getID()] = teacher;
         cout << "Adicionando "<<teacher.getName()<<" ao sistema..." <<endl;
     }
+
     map<string, TeacherDTO> getAllTeachersList() const {
         return teachersList;
     }
@@ -32,6 +33,7 @@ class TeacherDAO : public AbstractDAO<TeacherDTO> {
         }
         return nullptr;
     }
+    
     void update(const TeacherDTO& teacher) override {
         auto searchIter = teachersList.find(teacher.getID());
         if (searchIter != teachersList.end()) {

@@ -14,23 +14,15 @@ class StudentDTO: public Person{
 
     public:
     StudentDTO(): Person(), ra("0"), course(""){};
-    StudentDTO(string ra, string course): Person(name, age, phone), ra(ra), course(course){}
+    StudentDTO(string ra, string course): Person(name, age, phone), ra(ra), course(course){};
 
     //getters
-    string getRA() const{
-        return ra;
-    }
-    string getCourse() const{
-        return course;
-    }
+    string getRA() const{ return ra; }
+    string getCourse() const{ return course; }
 
     //setters
-    void setRA(string ra){
-        this->ra = ra;
-    }
-    void setCourse(string course){
-        this->course = course;
-    }
-
+    void setRA(string ra){ this->ra = ra; }
+    void setCourse(string course){ this->course = course; }
 };
+
 #endif

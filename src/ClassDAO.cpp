@@ -14,13 +14,16 @@ class ClassDAO : public AbstractDAO<ClassDTO> {
     ClassDAO(){
         this->classesList = {};
     }
+
     void add(const ClassDTO& classInfo) override {
         classesList.push_back(classInfo);
         cout << "Adicionando turma "<<classInfo.getName()<<" ao sistema..." <<endl;
     }
+
     vector<ClassDTO> getAllclassesList() const {
         return classesList;
     }
+
     shared_ptr<ClassDTO> searchClassName(const string& name) {
         for (auto& classInfo : classesList) {
             if (classInfo.getName() == name) {
@@ -29,6 +32,7 @@ class ClassDAO : public AbstractDAO<ClassDTO> {
         }
         return nullptr;
     }
+
     const shared_ptr<ClassDTO> searchId(string id) override {
         for (const auto& classInfo : classesList) {
             if (classInfo.getCode() == id) {
@@ -37,6 +41,7 @@ class ClassDAO : public AbstractDAO<ClassDTO> {
         }
         return nullptr;
     }
+    
     void update(const ClassDTO& classInfo) override {
         for (auto& c : classesList) {
             if (c.getCode() == classInfo.getCode()) {
