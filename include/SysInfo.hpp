@@ -24,9 +24,9 @@ public:
     void setVersion(float version){ this->version = version; }
     void setAuthor(vector<string> authors){ this->authors = authors; }
 
-    void showAuthors(vector<string> authors){
-        for (int i = 0; i < 5; i++) {
-            cout << authors[i] << endl;
+    void showAuthors() const{
+        for (const string& author : authors) {
+            cout << author << endl;
         }
     };
 };
