@@ -1,10 +1,11 @@
 #include <iostream>
 #include "../include/Menu.hpp"
 #include "../include/SysInfo.hpp"
-#include "StudentDAO.cpp"
-#include "TeacherDAO.cpp"
-#include "ClassDAO.cpp"
+//#include "StudentDAO.cpp"
+//#include "TeacherDAO.cpp"
+//#include "ClassDAO.cpp"
 
+SystemInfo SysInfo;
 
 using namespace std;
 
@@ -82,8 +83,8 @@ void Menu::menuChoice(int choice) {
             subMenuReport();
             break;
         case 5:
-            cout << "Version: " << SystemInfo::getVersion() << endl;
-            SystemInfo::showAuthors();
+            cout << "Version: " << SysInfo.getVersion() << endl;
+            SysInfo.showAuthors();
             break;
         case 6:
             exit(0);
@@ -99,19 +100,19 @@ void Menu::studentChoice() {
     cin >> selected;
     switch (selected) {
         case 1:
-            StudentDAO::add();
+            //StudentDAO::add();
             break;
         case 2:
-            StudentDAO::getAllStudentsList();
+            //StudentDAO::getAllStudentsList();
             break;
         case 3:
-            StudentDAO::searchId();
+            //StudentDAO::searchId();
             break;
         case 4:
-            StudentDAO::update();
+            //StudentDAO::update();
             break;
         case 5:
-            StudentDAO::remove();
+            //StudentDAO::remove();
             break;
         case 6: 
             showMenu();
@@ -127,16 +128,16 @@ void Menu::teacherChoice() {
     cin >> selected;
     switch (selected) {
         case 1:
-            TeacherDAO::add();
+            //TeacherDAO::add();
             break;
         case 2:
-            TeacherDAO::getAllTeachersList();
+            //TeacherDAO::getAllTeachersList();
             break;
         case 3:
-            TeacherDAO::update();
+            //TeacherDAO::update();
             break;
         case 4:
-            TeacherDAO::remove();
+            //TeacherDAO::remove();
             break;
         case 5:
             showMenu();
@@ -152,24 +153,24 @@ void Menu::subjectChoice() { //subject é o class
     cin >> selected;
     switch (selected) {
         case 1:
-            ClassDAO::add();
+            //ClassDAO::add();
             break;
         case 2:
-            ClassDAO::getAllclassesList();
+            //ClassDAO::getAllclassesList();
             break;
         case 3:
             cout << "3. Link a teacher to a subject" << endl;
-            //falta fazer esse metodo la em ClassDAO
+            ////falta fazer esse metodo la em ClassDAO
             break;
         case 4:
             cout << "4. Link a Student to a subject" << endl;
-            //falta fazer esse metodo la em ClassDAO
+            ////falta fazer esse metodo la em ClassDAO
             break;
         case 5:
-            ClassDAO::update();
+            //ClassDAO::update();
             break;
         case 6:
-            ClassDAO::remove();
+            //ClassDAO::remove();
             break;
         case 7:
             showMenu();
