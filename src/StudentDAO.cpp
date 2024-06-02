@@ -4,10 +4,42 @@
 class StudentDAO : public AbstractDAO<StudentDTO> {
     protected:
     map<string, StudentDTO> studentsList;
+    StudentDTO currentStudent;
 
     public:
     StudentDAO(){
         this->studentsList = map<string, StudentDTO>();
+    }
+
+    void addStudentInterface(){
+        string name, RA, phone, course;
+        int idade;
+        char escolha = 'S';
+        while(escolha == 'S' || escolha =='s'){
+            cout<<"-----------------"<<endl;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');    // Para o cin ignorar o enter e não dar erro de pular linha
+            cout<<"Digite o nome do estudante: ";
+            getline(cin, name);
+            cout<<"Digite a idade do estudante: ";
+            cin>>idade;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout<<"Digite o telefone (com ddd) do estudante: ";
+            getline(cin, phone);
+            cout<<"Digite o RA do estudante: ";
+            getline(cin, RA);
+            cout<<"Digite o curso do estudante: ";
+            getline(cin, course);
+            cout<<"Confirme os dados:"<<endl<<"-----------------"<<endl<<"Nome:     "<<name<<endl;
+            cout<<"Idade:    "<<idade<<" anos"<<endl<<"Telefone: "<<phone<<endl<<"RA:       "<<RA<<endl<<"Curso:    "<<course<<endl<<"-----------------"<<endl;
+            cout<<"Deseja alterar algum dado? (S/N) ";
+            cin>>escolha;
+        }
+        currentStudent.setName(name);
+        currentStudent.setAge(idade);
+        currentStudent.setCourse(course);
+        currentStudent.setPhone(phone);
+        currentStudent.setRA(RA);
+        add(currentStudent);
     }
 
     void add(const StudentDTO& student) override {

@@ -1,11 +1,15 @@
 #include <iostream>
 #include "../include/Menu.hpp"
 #include "../include/SysInfo.hpp"
-//#include "StudentDAO.cpp"
-//#include "TeacherDAO.cpp"
-//#include "ClassDAO.cpp"
+#include "StudentDAO.cpp"
+#include "TeacherDAO.cpp"
+#include "ClassDAO.cpp"
 
 SystemInfo SysInfo;
+
+StudentDAO stdntDAO;  // Representa o estudante a ser instanciado para então ser adicionado
+TeacherDAO currentTeacher;
+ClassDAO currentClass;
 
 using namespace std;
 
@@ -31,6 +35,7 @@ void Menu::subMenuStudent() {
     cout << "6. Go back to main menu" << endl;
     cout << "----------------------" << endl;
     cout << "Pick an option: ";
+    studentChoice();
 }
 
 void Menu::subMenuTeacher() {
@@ -100,7 +105,7 @@ void Menu::studentChoice() {
     cin >> selected;
     switch (selected) {
         case 1:
-            //StudentDAO::add();
+            stdntDAO.addStudentInterface();
             break;
         case 2:
             //StudentDAO::getAllStudentsList();
