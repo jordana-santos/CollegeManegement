@@ -6,7 +6,6 @@
 #include "ClassDAO.cpp"
 
 SystemInfo SysInfo;
-
 StudentDAO stdntDAO;  // Representa o estudante a ser instanciado para então ser adicionado
 TeacherDAO currentTeacher;
 ClassDAO currentClass;
@@ -96,6 +95,7 @@ void Menu::menuChoice(int choice) {
             break;
         default:
             cout << "Invalid option." << endl;
+            showMenu();
             break;
     }
 }
@@ -106,24 +106,30 @@ void Menu::studentChoice() {
     switch (selected) {
         case 1:
             stdntDAO.addStudentInterface();
+            showMenu();
             break;
         case 2:
-            //StudentDAO::getAllStudentsList();
+            stdntDAO.getAllStudentsList();
+            showMenu();
             break;
         case 3:
-            //StudentDAO::searchId();
+            stdntDAO.searchId();
+            showMenu();
             break;
         case 4:
-            //StudentDAO::update();
+            stdntDAO.update();
+            showMenu();
             break;
         case 5:
-            //StudentDAO::remove();
+            stdntDAO.remove();
+            showMenu();
             break;
         case 6: 
             showMenu();
             break;
         default:
             cout << "Invalid Option." << endl;
+            subMenuStudent();
             break;
     }
 }
@@ -133,22 +139,27 @@ void Menu::teacherChoice() {
     cin >> selected;
     switch (selected) {
         case 1:
-            //TeacherDAO::add();
+            currentTeacher.add();
+            showMenu();
             break;
         case 2:
-            //TeacherDAO::getAllTeachersList();
+            currentTeacher.getAllTeachersList();
+            showMenu();
             break;
         case 3:
-            //TeacherDAO::update();
+            currentTeacher.update();
+            showMenu();
             break;
         case 4:
-            //TeacherDAO::remove();
+            currentTeacher.remove();
+            showMenu();
             break;
         case 5:
             showMenu();
             break;
         default:
             cout << "Invalid Option." << endl;
+            subMenuTeacher();
             break;
     }
 }
@@ -158,10 +169,12 @@ void Menu::subjectChoice() { //subject é o class
     cin >> selected;
     switch (selected) {
         case 1:
-            //ClassDAO::add();
+            currentClass.add();
+            showMenu();
             break;
         case 2:
-            //ClassDAO::getAllclassesList();
+            currentClass.getAllclassesList();
+            showMenu();
             break;
         case 3:
             cout << "3. Link a teacher to a subject" << endl;
@@ -172,16 +185,19 @@ void Menu::subjectChoice() { //subject é o class
             ////falta fazer esse metodo la em ClassDAO
             break;
         case 5:
-            //ClassDAO::update();
+            currentClass.update();
+            showMenu();
             break;
         case 6:
-            //ClassDAO::remove();
+            currentClass.remove();
+            showMenu();
             break;
         case 7:
             showMenu();
             break;
         default:
             cout << "Invalid Option." << endl;
+            subMenuSubject();
             break;
     }
 }
@@ -207,6 +223,7 @@ void Menu::reportChoice() {
             break;
         default:
             cout << "Invalid Option." << endl;
+            subMenuReport();
             break;
     }
 }
