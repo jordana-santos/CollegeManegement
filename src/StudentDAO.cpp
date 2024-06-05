@@ -44,11 +44,22 @@ class StudentDAO : public AbstractDAO<StudentDTO> {
 
     void add(const StudentDTO& student) override {
         studentsList[student.getRA()] = student;
-        cout << "Adicionando "<<student.getName()<<" ao sistema..." <<endl;
+        cout << " - Adicionando "<<student.getName()<<" ao sistema..." <<endl;
     }
 
     map<string, StudentDTO> getAllStudentsList() const {
         return studentsList;
+    }
+
+    void showAllStudents() const {
+        if(studentsList.empty()){
+            cout<<"     Não há alunos registrados!"<<endl;
+            return;
+        }
+        cout<<"--------------------------"<<endl<<" Alunos cadastrados no sistema"<<endl<<"--------------------------"<<endl<<"   RA    -   Nome"<<endl;
+        for (auto it = studentsList.begin(); it != studentsList.end(); ++it) {
+            cout << " " << it->first << "  -   " << it->second.getName() << endl;
+        }
     }
     /*
     shared_ptr<StudentDTO> searchStudentName(const string& name) {
@@ -59,12 +70,24 @@ class StudentDAO : public AbstractDAO<StudentDTO> {
         }
         return nullptr; // Caso o aluno não seja encontrado, retorna um ponteiro vazio
     }*/
-    const shared_ptr<StudentDTO> searchId(string id) override{
+    const shared_ptr<StudentDTO> searchId(string id) const override{
         auto searchIter = studentsList.find(id);
         if (searchIter != studentsList.end()){
             return make_shared<StudentDTO>(searchIter->second);
         }
         return nullptr;
+    }
+    void searchByRA() const{
+        string searchedRA;
+        cout << " - Digite o RA a ser procurado:"<<endl;
+        cin >> searchedRA;
+        auto targetStudent = searchId(searchedRA);
+        if(targetStudent != nullptr){
+            cout<<" - Registro do RA "<<targetStudent->getRA()<<" encontrado: "<<endl<<"-----------------"<<endl<<" Nome:     "<<targetStudent->getName() <<endl;
+            cout<<" Idade:    "<<targetStudent->getAge() <<" anos"<<endl<<" Telefone: "<<targetStudent->getPhone() <<endl<<" Curso:    "<<targetStudent->getCourse()<<endl<<"-----------------"<<endl;
+        } else {
+            cout<<" - Nenhum registro com esse RA foi encontrado."<<endl;
+        }
     }
     /* Na hora da busca ficaria:
         StudentDTO* searchStudent = studentDAO.searchStudentName('ronaldo');
@@ -84,5 +107,21 @@ class StudentDAO : public AbstractDAO<StudentDTO> {
 
     void remove(string id) override {
         studentsList.erase(id);
+    }
+
+    void deleteStudent() {
+        char opcao;
+        string selectedRA;
+        cout << " - Digite o RA do aluno a ser deletado:"<<endl;
+        cin >> selectedRA;
+        auto targetStudent = searchId(selectedRA);
+        if(targetStudent != nullptr){
+            cout<<"Deseja realmente excluir "<<targetStudent->getName()<<"? Essa ação é irreversível. (Digite S/N) ";
+            cin>>opcao;
+            if(opcao == 's' || opcao == 'S'){
+                cout<<" - Removendo "<<targetStudent->getName()<<" do sistema..."<<endl;
+                remove(targetStudent->getRA());
+            } else cout<<" - Exclusão cancelada."<<endl;
+        } else cout<<" - Aluno não encontrado!"<<endl;
     }
 };

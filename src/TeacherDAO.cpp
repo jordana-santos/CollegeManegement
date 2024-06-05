@@ -26,7 +26,7 @@ class TeacherDAO : public AbstractDAO<TeacherDTO> {
         }
         return nullptr; // Caso o aluno não seja encontrado, retorna um ponteiro vazio
     }*/
-    const shared_ptr<TeacherDTO> searchId(string id) override {
+    const shared_ptr<TeacherDTO> searchId(string id) const override {
         auto searchIter = teachersList.find(id);
         if (searchIter != teachersList.end()){
             return make_shared<TeacherDTO>(searchIter->second);

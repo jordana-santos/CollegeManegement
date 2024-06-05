@@ -33,7 +33,7 @@ class ClassDAO : public AbstractDAO<ClassDTO> {
         return nullptr;
     }
 
-    const shared_ptr<ClassDTO> searchId(string id) override {
+    const shared_ptr<ClassDTO> searchId(string id) const override {
         for (const auto& classInfo : classesList) {
             if (classInfo.getCode() == id) {
                 return make_shared<ClassDTO>(classInfo);
