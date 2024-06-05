@@ -19,7 +19,7 @@ class AbstractDAO {
     virtual void add(const T& tempObject) = 0;
     virtual void update(const T& tempObject) = 0;
     virtual void remove(string id) = 0;
-    virtual const shared_ptr<T> searchId(string id) = 0;
+    virtual const shared_ptr<T> searchId(string id) const = 0;
 };
 
 #endif
