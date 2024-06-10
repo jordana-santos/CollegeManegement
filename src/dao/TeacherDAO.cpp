@@ -44,7 +44,7 @@ class TeacherDAO : public AbstractDAO<TeacherDTO> {
         }
         currentTeacher.setName(name);
         currentTeacher.setPhone(phone);
-        currentTeacher.setPhone(phone);
+        currentTeacher.setAge(age);
         currentTeacher.setID(id);
         add(currentTeacher);
     }
