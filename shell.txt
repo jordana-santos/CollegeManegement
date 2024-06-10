@@ -1,1 +1,2 @@
-g++ include/AbstractDAO.hpp src/StudentDAO.cpp include/StudentDTO.hpp src/TeacherDAO.cpp include/TeacherDTO.hpp include/ClassDTO.hpp src/ClassDAO.cpp include/College.hpp include/Menu.hpp include/Person.hpp include/Semester.hpp include/SysInfo.hpp src/Controller.cpp src/Start.cpp src/Menu.cpp -o Main
+g++ src/dao/StudentDAO.cpp src/dao/TeacherDAO.cpp src/dao/ClassDAO.cpp src/
+dao/College.cpp src/system/SysInfo.cpp src/menu/Controller.cpp src/menu/Start.cpp src/menu/Menu.cpp -o Main
