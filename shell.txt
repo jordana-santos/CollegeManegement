@@ -1,2 +1,1 @@
-g++ src/dao/StudentDAO.cpp src/dao/TeacherDAO.cpp src/dao/ClassDAO.cpp src/
-dao/College.cpp src/system/SysInfo.cpp src/menu/Controller.cpp src/menu/Start.cpp src/menu/Menu.cpp -o Main
+g++ src/dao/StudentDAO.cpp src/dao/TeacherDAO.cpp src/dao/ClassDAO.cpp src/dao/College.cpp src/system/SysInfo.cpp src/menu/Controller.cpp src/menu/Start.cpp src/menu/Menu.cpp -o Main
